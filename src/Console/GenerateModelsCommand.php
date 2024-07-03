@@ -34,15 +34,27 @@ class GenerateModelsCommand extends Command
         }
     }
 
-    protected function generateModel($table, $columns, $relationships)
+        protected function generateModel($table, $columns, $relationships)
     {
         $modelTemplate = file_get_contents(__DIR__ . '/../stubs/model.stub');
         $modelContent = str_replace(['DummyModel', 'dummy_table'], [ucfirst($table), $table], $modelTemplate);
+
+        $fillableColumns = $this->generateFillableColumns($columns);
+        $modelContent = str_replace('// Add fillable columns here', $fillableColumns, $modelContent);
 
         $relationshipsMethods = $this->generateRelationshipsMethods($relationships);
         $modelContent = str_replace('// Add relationships here', $relationshipsMethods, $modelContent);
 
         File::put(app_path("/Models/".ucfirst($table).".php"), $modelContent);
+    }
+
+        protected function generateFillableColumns($columns)
+    {
+        $fillable = array_map(function($column) {
+            return "'{$column['name']}'";
+        }, $columns);
+
+        return 'protected $fillable = [' . implode(', ', $fillable) . '];';
     }
 
     protected function generateMigration($table, $columns, $relationships)
