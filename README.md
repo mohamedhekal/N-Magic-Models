@@ -6,10 +6,6 @@ A Laravel package to auto-generate models and migrations from table definitions.
 
 **Noouh For Integrated Solutions** is dedicated to providing innovative software solutions. We specialize in developing high-quality applications tailored to meet the specific needs of our clients.
 
-## About the Author
-
-**Eng. Mohamed Hekal** is a senior developer at Noouh For Integrated Solutions. With years of experience in PHP and Laravel, Eng. Mohamed is passionate about creating efficient and scalable software solutions.
-
 ## Installation
 
 To install the Noouh Auto Model package, you can require it using Composer:
@@ -34,24 +30,24 @@ Create a JSON file (e.g., `tables.json`) with your table definitions and relatio
 
 ```json
 [
-    {
-        "table": "users",
-        "columns": [
-            {"name": "name", "type": "string"},
-            {"name": "email", "type": "string"}
-        ]
-    },
-    {
-        "table": "posts",
-        "columns": [
-            {"name": "title", "type": "string"},
-            {"name": "content", "type": "text"},
-            {"name": "user_id", "type": "unsignedBigInteger"}
-        ],
-        "relationships": [
-            {"type": "belongsTo", "relatedTable": "users", "foreignKey": "user_id"}
-        ]
-    }
+  {
+    "table": "users",
+    "columns": [
+      { "name": "name", "type": "string" },
+      { "name": "email", "type": "string" }
+    ]
+  },
+  {
+    "table": "posts",
+    "columns": [
+      { "name": "title", "type": "string" },
+      { "name": "content", "type": "text" },
+      { "name": "user_id", "type": "unsignedBigInteger" }
+    ],
+    "relationships": [
+      { "type": "belongsTo", "relatedTable": "users", "foreignKey": "user_id" }
+    ]
+  }
 ]
 ```
 
@@ -67,24 +63,24 @@ Given the following `tables.json` file:
 
 ```json
 [
-    {
-        "table": "users",
-        "columns": [
-            {"name": "name", "type": "string"},
-            {"name": "email", "type": "string"}
-        ]
-    },
-    {
-        "table": "posts",
-        "columns": [
-            {"name": "title", "type": "string"},
-            {"name": "content", "type": "text"},
-            {"name": "user_id", "type": "unsignedBigInteger"}
-        ],
-        "relationships": [
-            {"type": "belongsTo", "relatedTable": "users", "foreignKey": "user_id"}
-        ]
-    }
+  {
+    "table": "users",
+    "columns": [
+      { "name": "name", "type": "string" },
+      { "name": "email", "type": "string" }
+    ]
+  },
+  {
+    "table": "posts",
+    "columns": [
+      { "name": "title", "type": "string" },
+      { "name": "content", "type": "text" },
+      { "name": "user_id", "type": "unsignedBigInteger" }
+    ],
+    "relationships": [
+      { "type": "belongsTo", "relatedTable": "users", "foreignKey": "user_id" }
+    ]
+  }
 ]
 ```
 
