@@ -82,17 +82,17 @@ class GenerateModelsCommand extends Command
 
             if ($type == 'belongsTo') {
                 $method = "
-    public function $relatedTable()
-    {
-        return \$this->belongsTo('App\Models\$relatedTable', '$foreignKey');
-    }
+        public function $relatedTable()
+        {
+            return \$this->belongsTo('App\\Models\\$relatedTable', '$foreignKey');
+        }
                 ";
             } elseif ($type == 'hasMany') {
                 $method = "
-    public function " . strtolower($relatedTable) . "s()
-    {
-        return \$this->hasMany('App\Models\$relatedTable', '$foreignKey');
-    }
+        public function " . strtolower($relatedTable) . "s()
+        {
+            return \$this->hasMany('App\\Models\\$relatedTable', '$foreignKey');
+        }
                 ";
             }
 
@@ -100,6 +100,7 @@ class GenerateModelsCommand extends Command
         }
         return $methods;
     }
+
 
     protected function generateForeignKeys($relationships)
     {
