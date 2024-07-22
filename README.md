@@ -65,18 +65,3 @@ Noouh For Integrated Solutions is dedicated to providing innovative software sol
 
 Email: info@noouh.com
 ```
-
-### Steps to Update:
-
-1. **Update the File:**
-   Replace the existing `README.md` with the updated version above.
-
-2. **Push the Changes to GitHub:**
-
-   ```bash
-   git add README.md
-   git commit -m "Update README file to reflect usage changes"
-   git push origin main
-   ```
-
-This updated `README.md` provides clear instructions on how to use the package, including an example JSON file structure and an explanation of how the command works.
