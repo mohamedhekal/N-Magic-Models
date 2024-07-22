@@ -1,38 +1,38 @@
-# Noouh Auto Model
+Sure! Here's the updated `README.md` file to reflect the changes and provide clear instructions on how to use the package:
 
-A Laravel package to auto-generate models and migrations from table definitions.
+### README.md
 
-## About the Company
+```markdown
+# Noouh Auto Model - Fillable V2
 
-**Noouh For Integrated Solutions** is dedicated to providing innovative software solutions. We specialize in developing high-quality applications tailored to meet the specific needs of our clients.
+A Laravel package to auto-generate fillable properties for models based on table definitions from a JSON file.
 
 ## Installation
 
-To install the Noouh Auto Model package, you can require it using Composer:
+You can install the package via composer:
 
 ```bash
-composer require noouh/auto-model
+composer require noouh/auto-model-fillable
 ```
-
-## Publish the Stubs
-
-After installing the package, publish the stubs using the following command:
-
-```bash
-php artisan vendor:publish --tag=stubs
-```
-
-This will publish the `model.stub` and `migration.stub` files to your project's `stubs` directory.
 
 ## Usage
 
-Create a JSON file (e.g., `tables.json`) with your table definitions and relationships. Here is an example structure:
+To generate fillable properties for all models based on table definitions from a JSON file, use the following command:
+
+```bash
+php artisan noouh:generate-fillable path/to/your/json/file.json
+```
+
+### Example JSON File
+
+The JSON file should contain the table definitions with the columns. Here is an example structure:
 
 ```json
 [
   {
     "table": "users",
     "columns": [
+      { "name": "id", "type": "int", "primaryKey": true, "autoIncrement": true },
       { "name": "name", "type": "string" },
       { "name": "email", "type": "string" }
     ]
@@ -40,6 +40,7 @@ Create a JSON file (e.g., `tables.json`) with your table definitions and relatio
   {
     "table": "posts",
     "columns": [
+      { "name": "id", "type": "int", "primaryKey": true, "autoIncrement": true },
       { "name": "title", "type": "string" },
       { "name": "content", "type": "text" },
       { "name": "user_id", "type": "unsignedBigInteger" }
@@ -51,52 +52,31 @@ Create a JSON file (e.g., `tables.json`) with your table definitions and relatio
 ]
 ```
 
-Run the command to generate models and migrations:
+### How It Works
 
-```bash
-php artisan generate:models /path/to/tables.json
+1. **Loop Through Model Files:** The script loops through all model files in the `app/Models` directory.
+2. **Extract Table Name:** It extracts the table name from each model file using the `$table` property.
+3. **Get Columns from JSON:** It retrieves the columns for the corresponding table from the provided JSON file.
+4. **Update Fillable Properties:** It updates the model file with the fillable properties if the table and columns are found.
+
+### About the Company
+
+Noouh For Integrated Solutions is dedicated to providing innovative software solutions. We specialize in developing high-quality applications tailored to meet the specific needs of our clients.
+
+Email: info@noouh.com
 ```
 
-## Example
+### Steps to Update:
 
-Given the following `tables.json` file:
+1. **Update the File:**
+   Replace the existing `README.md` with the updated version above.
 
-```json
-[
-  {
-    "table": "users",
-    "columns": [
-      { "name": "name", "type": "string" },
-      { "name": "email", "type": "string" }
-    ]
-  },
-  {
-    "table": "posts",
-    "columns": [
-      { "name": "title", "type": "string" },
-      { "name": "content", "type": "text" },
-      { "name": "user_id", "type": "unsignedBigInteger" }
-    ],
-    "relationships": [
-      { "type": "belongsTo", "relatedTable": "users", "foreignKey": "user_id" }
-    ]
-  }
-]
-```
+2. **Push the Changes to GitHub:**
 
-Running the command:
+   ```bash
+   git add README.md
+   git commit -m "Update README file to reflect usage changes"
+   git push origin main
+   ```
 
-```bash
-php artisan generate:models /path/to/tables.json
-```
-
-Will generate:
-
-- A `User` model in `app/Models/User.php`
-- A `Post` model in `app/Models/Post.php` with a `belongsTo` relationship to the `User` model
-- A migration file for the `users` table
-- A migration file for the `posts` table with a foreign key to the `users` table
-
-## License
-
-This package is open-sourced software licensed under the [MIT license](LICENSE).
+This updated `README.md` provides clear instructions on how to use the package, including an example JSON file structure and an explanation of how the command works.
